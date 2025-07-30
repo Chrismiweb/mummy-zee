@@ -51,7 +51,7 @@ export default function CategorySection({ category, index }) {
         {products.length > 4 && (
           <button
             onClick={() => setExpanded(exp => !exp)}
-            className="text-[18px] font-semibold mt-4 underline"
+            className="text-[18px] font-semibold mt-4 underline cursor-pointer"
           >
             {expanded ? 'View Less' : 'View More'}
           </button>

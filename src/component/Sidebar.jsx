@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaUserGraduate } from "react-icons/fa6";
 import { IoLogOutSharp } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
@@ -7,17 +7,20 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { BsCardList } from "react-icons/bs";
 import { IoLogOutOutline } from "react-icons/io5";
+import { AuthContext } from '../context/AuthProvider';
 
 
 
 const Sidebar = ({onClose}) => {
+    const {setAdmin} = useContext(AuthContext)
+
     const [close, setClose] = useState(true)
     const navigate = useNavigate()
     const logout =()=>{
         localStorage.removeItem("token")
-        localStorage.removeItem("username")
+        localStorage.removeItem("name")
         navigate('/login')
-        setUser(null)
+        setAdmin(null)
     }
     const items = [
         { icon: <MdOutlineDashboard />, label: 'Dashboard', link: '/dashboard' },

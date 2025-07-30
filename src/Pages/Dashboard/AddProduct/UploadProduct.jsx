@@ -1,113 +1,224 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UploadProduct = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    regularPrice: '',
-    salePrice: '',
-    size: 'Small',
-    stock: '',
-    sku: '',
+    productName: '',
+    price: '',
+    size: '',
     category: '',
-    tag: '',
-    description: '',
-    image: null,
+    productImage: null,
   });
-
   const [imagePreview, setImagePreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+    const navigate = useNavigate()
 
-  const handleChange = (e) => {
+
+  const handleChange = e => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = e => {
     const file = e.target.files[0];
     if (file) {
-      setFormData((prev) => ({ ...prev, image: file }));
+      setFormData(prev => ({ ...prev, productImage: file }));
       setImagePreview(URL.createObjectURL(file));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log('Submitted:', formData);
-    // Upload logic (e.g. FormData API for file upload) goes here
+    setError('');
+    setSuccess('');
+
+    const { productName, price, size, category, productImage } = formData;
+    if (!productName || !price || !size || !category || !productImage) {
+      setError('Please complete all fields and upload an image.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const token = localStorage.getItem('token');
+      const payload = new FormData();
+      payload.append('productName', productName);
+      payload.append('price', price);
+      payload.append('size', size);
+      payload.append('category', category);
+      payload.append('productImage', productImage);
+
+      const res = await fetch('http://localhost:1040/add-product', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: payload,
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Upload failed');
+      }
+
+      setSuccess('Product uploaded successfully!');
+      navigate("/products")
+      setFormData({
+        productName: '',
+        price: '',
+        size: '',
+        category: '',
+        productImage: null,
+      });
+      setImagePreview(null);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleReset = () => {
     setFormData({
-      name: '',
-      regularPrice: '',
-      salePrice: '',
+      productName: '',
+      price: '',
       size: 'Small',
-      stock: '',
-      sku: '',
-      category: '',
-      tag: '',
-      description: '',
-      image: null,
+      category: 'abaya',
+      productImage: null,
     });
     setImagePreview(null);
+    setError('');
+    setSuccess('');
   };
 
   return (
-<div className='w-full bg-gray-100 py-[100px]'>
-    <div className="w-[60%] mx-auto px-[30px] py-[30px] bg-white rounded-[20px]">
-      <h2 className="text-[40px] font-semibold mb-1">Add New Product</h2>
-      <p className="text-gray-500 mb-4 text-[15px]">Add information and upload a product image</p>
+    <div className="w-full bg-gray-100 py-[100px]">
+      <div className="w-[60%] mx-auto px-[30px] py-[30px] bg-white rounded-[20px] shadow-lg">
+        <h2 className="text-[40px] font-semibold mb-1">Add New Product</h2>
+        <p className="text-gray-500 mb-4 text-[15px]">
+          Add information and upload a product image
+        </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className='flex flex-col gap-[10px]'>
-            <p className='text-[20px] text-gray-500'>Product Name</p>
-            <input type="text" name="name" placeholder="Product Name" value={formData.name} onChange={handleChange} className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px]" />
-        </div>
-        <div className='flex flex-col gap-[10px]'>
-            <p className='text-[20px] text-gray-500'>Price</p>
-            <input type="text" name="salePrice" placeholder="Sale Price" value={formData.salePrice} onChange={handleChange} className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px]" />
-        </div>
-        <div className='flex flex-col gap-[10px]'>
-            <p className='text-[20px] text-gray-500'>Size</p>
-            <select name="size" value={formData.size} onChange={handleChange} className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px] cursor-pointer">
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-            <option value="Large">All Size</option>
-            </select>
-        </div>
-        <div className='flex flex-col gap-[10px]'>
-            <p className='text-[20px] text-gray-500'>Category </p>
-            <select name="size" value={formData.size} onChange={handleChange} className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px] cursor-pointer">
-            <option value="Small">Abaya</option>
-            <option value="Medium">Shoe</option>
-            <option value="Large">Jalabiyas</option>
-            <option value="Large">All</option>
-            </select>
-        </div>
-        <div
-            className="border-2 border-dashed border-gray-400 rounded-md w-full h-60 flex items-center justify-center cursor-pointer relative bg-white"
-        >
-              <label
-                htmlFor="file-upload"
-                className="block w-full text-center p-4 text-gray-500 bg-white cursor-pointer text-[30px] hover:text-blue-600"
+        {error && <p className="text-red-600 mb-4">{error}</p>}
+        {success && <p className="text-green-600 mb-4">{success}</p>}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Product Name */}
+          <div className="flex flex-col gap-[10px]">
+            <label className="text-[20px] text-gray-500">Product Name</label>
+            <input
+              type="text"
+              name="productName"
+              placeholder="Product Name"
+              value={formData.productName}
+              onChange={handleChange}
+              className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px]"
+            />
+          </div>
+
+          {/* Price */}
+          <div className="flex flex-col gap-[10px]">
+            <label className="text-[20px] text-gray-500">Price</label>
+            <input
+              type="text"
+              name="price"
+              placeholder="Sale Price"
+              value={formData.price}
+              onChange={handleChange}
+              className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px]"
+            />
+          </div>
+
+          {/* Size */}
+          <div className="flex flex-col gap-[10px]">
+            <label className="text-[20px] text-gray-500">Size</label>
+            <select
+              name="size"
+              value={formData.size}
+              onChange={handleChange}
+              className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px] cursor-pointer"
             >
-                Upload Image or Video Here
+               <option value="" disabled>Select size</option>
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+            </select>
+          </div>
+
+          {/* Category */}
+          <div className="flex flex-col gap-[10px]">
+            <label className="text-[20px] text-gray-500">Category</label>
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="w-full px-[20px] py-[15px] border border-gray-300 rounded-[10px] cursor-pointer"
+            >
+               <option value="" disabled>Select Category</option>
+              <option value="abaya">Abaya</option>
+              <option value="jalabiya">Jalabiya</option>
+              <option value="gown">Gown</option>
+              <option value="shoe">Shoe</option>
+              <option value="bag">Bag</option>
+              <option value="cap">Cap</option>
+              <option value="scarve">Scarve</option>
+              <option value="hijab">Hijab</option>
+              <option value="underwear">Underwear</option>
+              <option value="veil">Veil</option>
+              <option value="all">All</option>
+            </select>
+          </div>
+
+          {/* Image Upload */}
+          <div className="border-2 border-dashed border-gray-400 rounded-md w-full h-60 flex items-center justify-center cursor-pointer relative bg-white">
+            <label
+              htmlFor="file-upload"
+              className="block w-full text-center p-4 text-gray-500 text-[30px] hover:text-blue-600"
+            >
+              Upload Image Here
             </label>
             <input
-                type="file"
-                accept="image/*"
-                id="file-upload"
-                className="hidden"
+              type="file"
+              accept="image/*"
+              id="file-upload"
+              className="hidden"
+              onChange={handleImageChange}
             />
-        </div>
+          </div>
 
-        <div className="flex gap-4">
-          <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">Save</button>
-          <button type="button" onClick={handleReset} className="bg-gray-300 text-black px-4 py-2 rounded">Cancel</button>
-        </div>
-      </form>
+          {/* Preview */}
+          {imagePreview && (
+            <div className="mt-2">
+              <img
+                src={imagePreview}
+                alt="Preview"
+                className="max-h-60 w-auto object-cover rounded"
+              />
+            </div>
+          )}
+
+          {/* Actions */}
+          <div className="flex gap-4">
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+            >
+              {loading ? 'Saving…' : 'Save'}
+            </button>
+            <button
+              type="button"
+              onClick={handleReset}
+              className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 transition"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
   );
 };
 
