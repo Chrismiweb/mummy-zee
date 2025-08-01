@@ -6,9 +6,10 @@ function Navbar() {
   return (
     <div className='w-full '>
         <div className='flex items-center justify-between px-[50px] py-[40px]'>
-            <div>
+             <div>
                 <p>LOGO</p>
             </div>
+           
             <div className='flex gap-[30px] justify-center items-center'>
                 <input type="text" placeholder='Search' className='bg-[#F2F2F2] w-[60vw] px-[30px] placeholder:text-black placeholder:text-[20px] placeholder:font-semibold py-[10px] rounded-full' />
                 <div className='flex gap-[5px] justify-center items-center'>
@@ -17,9 +18,11 @@ function Navbar() {
                     </div>
                     <p className='text-[18px] font-semibold'>NGN</p>
                 </div>
-                <div className='flex gap-[5px] justify-center items-center'>
-                    <p className='text-[18px] font-semibold'>Login</p>
-                </div>
+                <a href="/login">
+                    <div className='flex gap-[5px] justify-center items-center'>
+                        <p className='text-[18px] font-semibold'>Login</p>
+                    </div>
+                </a>
                 <div>
                     <CiShoppingCart className='text-[30px]'/>
                 </div>

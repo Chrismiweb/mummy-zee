@@ -287,6 +287,9 @@ export default function ProductList() {
   );
 }
 
+
+
+
 // Separate form component for editing
 function EditForm({ product, onSave, onCancel }) {
   const [form, setForm] = useState({ ...product });
@@ -302,7 +305,7 @@ function EditForm({ product, onSave, onCancel }) {
   };
 
   return (
-    <form onSubmit={submit} className="space-y-4 shadow-lg px-[60px] py-[30px]">
+    <form onSubmit={submit} className="space-y-4 shadow-lg px-[60px] py-[30px] ">
       <div>
         <label className="block mb-1">Product Name</label>
         <input

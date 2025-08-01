@@ -414,6 +414,15 @@ function Products() {
   // 1. Always call hooks at the top level, in the same order
   const { grouped, error } = useProducts();
 
+  const cleanPrice = (value) => {
+    if (typeof value === 'number') return value;
+    if (typeof value === 'string') {
+      const sanitized = value.replace(/[^0-9.]/g, ''); // remove ₦, commas, spaces
+      return Number(sanitized) || 0;
+    }
+    return 0;
+  };
+
   // 2. Always call useMemo (or any hook) unconditionally
   const sections = useMemo(() => {
     if (!grouped) return [];
@@ -424,7 +433,8 @@ function Products() {
       // FIX: use `prods`, not `products`
       products: prods.map(p => ({
         title: p.productName.trim(),
-        price: `₦${Number(p.price).toLocaleString()}`,
+        // price: `₦${Number(p.price).toLocaleString()}`,
+        price: `₦${cleanPrice(p.price).toLocaleString()}`,
         image: p.productImage,
       })),
     }));
