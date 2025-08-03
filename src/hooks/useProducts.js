@@ -5,7 +5,7 @@ export function useProducts() {
   const [data, setData]     = useState(null);
   const [error, setError]   = useState(null);
   useEffect(() => {
-    fetch('http://localhost:1040/all-product')
+    fetch('https://mummy-zee-backend-1.onrender.com/all-product')
       .then(res => {
         if (!res.ok) throw new Error(res.statusText);
         return res.json();

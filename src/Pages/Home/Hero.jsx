@@ -8,7 +8,7 @@ function Hero() {
 
   // 1) Fetch products once on mount
   useEffect(() => {
-    fetch('http://localhost:1040/all-product')
+    fetch('https://mummy-zee-backend-1.onrender.com/all-product')
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();

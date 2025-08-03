@@ -33,7 +33,7 @@ export default function SignUp() {
 
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:1040/register-admin', {
+      const res = await fetch('https://mummy-zee-backend-1.onrender.com/register-admin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, confirmPassword }),

@@ -26,7 +26,7 @@ export default function Login() {
     }
     // calling api for authorization
         try {
-      const response = await fetch("http://localhost:1040/login-admin", {
+      const response = await fetch("https://mummy-zee-backend-1.onrender.com/login-admin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ identifier, password }),
