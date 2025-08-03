@@ -18,7 +18,7 @@ export default function About() {
       {/* CEO Image & Bio */}
       <section className="w-full flex flex-col lg:flex-row items-center justify-center py-[10vh] px-[5vw] gap-[5vh] bg-white">
         <div className="w-[40vw] h-[40vw] lg:w-[20vw] lg:h-[20vw] rounded-full overflow-hidden">
-          <img src="/image/mummyzeeimg.jpg" alt="CEO" className="w-full h-full object-cover" />
+          <img src="/image/ceo.jpg" alt="CEO" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-[600px] text-center lg:text-left">
           <h2 className="text-[4vh] font-semibold mb-[2vh]">Meet Our CEO</h2>

@@ -15,8 +15,8 @@ function Footer() {
           <p className="flex items-center gap-2 text-[2.2vh] lg:text-[2vh] md:text-[2.4vh]">
             <FiPhone /> +2347035722334
           </p>
-          <p className="flex items-center gap-2 text-[2.2vh] lg:text-[2vh] md:text-[2.4vh]">
-            <FiMapPin /> 4th building after nasara fuel station, sawmill garage,osere.
+          <p className="flex items-center gap-2 text-[2.2vh] lg:text-[2vh] md:text-[2.4vh] lg:w-[80%]">
+            <FiMapPin /> 4th building after nasara fuel station, sawmill garage,osere, Ilorin, Kwara State, Nigeria.
           </p>
 
           {/* Social Media Links */}
