@@ -1,113 +1,10 @@
-// import React, { useState, useEffect } from 'react';
-
-// export default function ProductList() {
-//   const [products, setProducts] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState('');
-
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       setError('');
-//       try {
-//         const token = localStorage.getItem('token');
-//         const res = await fetch('http://localhost:1040/all-product', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         const data = await res.json();
-
-//         if (!res.ok) {
-//           throw new Error(data.message || 'Failed to fetch products');
-//         }
-
-//         setProducts(data.products);
-//       } catch (err) {
-//         setError(err.message);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchProducts();
-//   }, []);
-
-//   if (loading) {
-//     return (
-//       <div className="flex items-center justify-center h-screen">
-//         <p className="text-xl">Loading products…</p>
-//       </div>
-//     );
-//   }
-
-//   if (error) {
-//     return (
-//       <div className="flex items-center justify-center h-screen">
-//         <p className="text-red-600 text-xl">Error: {error}</p>
-//       </div>
-//     );
-//   }
-
-//   // If no products are returned
-//   if (products.length === 0) {
-//     return (
-//       <div className="flex items-center justify-center h-screen">
-//         <p className="text-2xl text-gray-600">No products uploaded</p>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="flex flex-col gap-[50px] py-[40px] px-[50px]">
-//       <div className="flex items-center justify-between">
-//         <p className="text-[50px]">All Products</p>
-//         <input
-//           type="text"
-//           placeholder="Search"
-//           className="bg-[#F2F2F2] w-[50%] px-[30px] placeholder:text-black placeholder:text-[20px] placeholder:font-semibold py-[10px] rounded-full"
-//         />
-//       </div>
-
-//       <div className="w-[100%] grid grid-cols-5 gap-[30px]">
-//         {products.map((product) => (
-//           <div key={product._id} className="w-[98%] flex flex-col gap-[7px]">
-//             <div className="w-full h-[400px] bg-gray-500 overflow-hidden rounded-md">
-//               <img
-//                 src={product.productImage}
-//                 alt={product.productName}
-//                 className="w-full h-full object-cover"
-//               />
-//             </div>
-//             <div className="flex flex-col gap-[7px] w-full">
-//               <p className="text-[18px] font-semibold text-[#686868]">
-//                 {product.productName}
-//               </p>
-//               <p className="text-[18px] font-semibold text-[#686868]">
-//                 Size: {product.size}
-//               </p>
-//               <p className="text-[24px] font-semibold text-black">
-//                 Category: {product.category}
-//               </p>
-//               <p className="text-[27px]">₦{product.price}</p>
-//             </div>
-//             <div className="flex w-full items-center justify-between">
-//               <button className="w-[45%] py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-green-700 hover:text-white bg-green-600 text-white shadow-md">
-//                 Edit
-//               </button>
-//               <button className="w-[45%] py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-red-700 hover:text-white bg-red-600 text-white shadow-md">
-//                 Delete
-//               </button>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { HiOutlineMenuAlt3 } from "react-icons/hi"
+import Sidebar from '../../../component/Sidebar';
+import { Input, Space } from 'antd';
+const { Search } = Input;
 
 export default function ProductList() {
   const [products, setProducts]       = useState([]);
@@ -117,9 +14,18 @@ export default function ProductList() {
   const [editingProduct, setEditingProduct]   = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deletingId, setDeletingId]           = useState(null);
+  const [showSidebar, setShowSidebar] = useState(false)
+  const [searchQuery, setSearchQuery] = useState(''); // <-- Search Query
+    
+    
+//   handle display sidebar
+  const handleDisplaySidebar = () => {
+      setShowSidebar(true); // open sidebar
+  };
 
-  const navigate = useNavigate();
-
+  const handleCloseSidebar = () => {
+      setShowSidebar(false); // close sidebar
+  };
   // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
@@ -195,6 +101,33 @@ export default function ProductList() {
     }
   };
 
+    // Handle Search Input Change
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  // Filtered Products based on Search Query
+  const filteredProducts = products.filter((product) => {
+    return (
+      product.productName.toLowerCase().includes(searchQuery) ||
+      product.category.toLowerCase().includes(searchQuery)
+    );
+  });
+
+  const highlightMatch = (text, query) => {
+  if (!query) return text;
+  const regex = new RegExp(`(${query})`, 'gi');
+  const parts = text.split(regex);
+  return parts.map((part, index) =>
+    part.toLowerCase() === query.toLowerCase() ? (
+      <span key={index} className="text-blue-500">{part}</span>
+    ) : (
+      part
+    )
+  );
+};
+
+
   if (loading) return <p className="text-center mt-20">Loading…</p>;
   if (error)   return <p className="text-red-600 text-center mt-20">Error: {error}</p>;
   if (products.length === 0)
@@ -204,38 +137,64 @@ export default function ProductList() {
     <>
       <ToastContainer />
 
-      <div className="flex flex-col gap-12 py-10 px-12">
-          <div className="flex items-center justify-between">
-            <p className="text-[50px]">All Products</p>
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-[#F2F2F2] w-[50%] px-[30px] placeholder:text-black placeholder:text-[20px] placeholder:font-semibold py-[10px] rounded-full"
-            />
+      <div className="flex flex-col gap-12 py-10 lg:px-12">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-[30px]">
+            <div className='flex justify-between w-full'>
+                <p className="text-[4vh] md:text-[5vh]">All Products</p>
+                <div className='flex lg:hidden w-[30%]  justify-end'>
+                    <div>
+                        {!showSidebar && (
+                            <button onClick={handleDisplaySidebar} className='text-[9vw] md:text-[6vw]'>
+                            <HiOutlineMenuAlt3 />
+                            </button>
+                        )}
+                    </div>
+                    {/* Mobile sidebar */}
+                      {showSidebar && (
+                          <Sidebar onClose={handleCloseSidebar} />
+                      )}
+                </div>
+            </div>
+            <Space direction="vertical">
+              <Search
+                placeholder="SEARCH PRODUCTS"
+                allowClear
+                className="placeholder:font-bold"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                style={{
+                      width: window.innerWidth >= 1024
+                        ? '800px' // lg
+                        : window.innerWidth >= 768
+                        ? '90vw' // md
+                        : '90vw'  // sm
+                    }}
+              />
+            </Space>
           </div>
 
-        <div className="grid grid-cols-5 gap-8">
-          {products.map(product => (
-            <div key={product._id} className="bg-white shadow rounded p-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-[12px] md:gap-[8px] lg:gap-[5px]">
+          {filteredProducts.map(product => (
+            <div key={product._id} className="bg-white shadow rounded p-4 w-[100%] gap-[5px] flex flex-col">
               <img
                 src={product.productImage}
                 alt={product.productName}
-                className="h-48 w-full object-cover rounded"
+                className="h-48 w-full object-fill rounded"
               />
-              <h2 className="mt-2 font-semibold">{product.productName}</h2>
-              <p>Size: {product.size}</p>
-              <p>Category: {product.category}</p>
-              <p className="text-lg font-bold">₦{product.price}</p>
+              <h2 className="mt-2 font-semibold text-[3vh] md:text-[2.3vh] lg:text-[2vh]">{highlightMatch(product.productName, searchQuery)}</h2>
+              <p className='text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]'>Size: {product.size}</p>
+              <p className='text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]'>Category: {highlightMatch(product.category, searchQuery)}</p>
+              <p className="text-[2.9vh] md:text-[2.3vh] lg:text-[1.9vh] font-bold">₦{product.price}</p>
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => handleEditClick(product)}
-                  className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 cursor-pointer"
+                  className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 cursor-pointer text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDeleteClick(product._id)}
-                  className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 cursor-pointer"
+                  className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 cursor-pointer text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]"
                 >
                   Delete
                 </button>

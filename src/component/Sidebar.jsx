@@ -23,7 +23,7 @@ const Sidebar = ({onClose}) => {
         setAdmin(null)
     }
     const items = [
-        { icon: <MdOutlineDashboard />, label: 'Dashboard', link: '/dashboard' },
+        // { icon: <MdOutlineDashboard />, label: 'Dashboard', link: '/dashboard' },
         { icon: <BsCardList />, label: 'Product List', link: '/products' },
         { icon: <AiOutlinePlusCircle />, label: 'Add Product', link: '/upload' },
         // { icon: <GiGraduateCap />, label: 'Explore Universities', link: '/explore-universities' },
@@ -37,16 +37,19 @@ const Sidebar = ({onClose}) => {
                 w-[85%] lg:w-[5%] lg:hover:w-[20vw] overflow-hidden z-40 shadow-[4px_0_12px_rgba(0,0,0,0.1)]
             `}>      
             <div className='flex items-center justify-between md:pr-[50px]'>
-                <div className='flex'>
+                {/* <div className='flex'>
                     <Link to='/' className='md:text-[2.5vw] lg:text-[1.1vw] text-[5.5vw] h-[5vh] w-[5vh] rounded-[5px] ml-[0.5vw] my-[30px]  bg-[white] text-[#0D2B56] flex justify-center items-center font-bold'>E</Link>
-                </div>
+                </div> */}
+                <Link to='/' className='lg:w-[5vw] md:w-[10vw] w-[20vw] pb-[40px]'>
+                    <img src="/image/mummyZee Logo.png" className='w-full h-full object-fill' alt="" />
+                </Link>
                 <FiX onClick={onClose} className='md:text-[6vw] text-[9vw] lg:hidden flex'/>
             </div>
             <div className="space-y-[3.5vh] md:space-y-[3vh] cursor-pointer">
                 {items.map((item, index) => (
                     <Link to={item.link} key={index} className="flex items-center space-x-3 px-2 hover:bg-[#E5E7EB] rounded-md py-2 transition-all duration-200">
-                        <div className="text-[#111827] text-[4.5vh] md:text-[3.8vh] lg:text-[4.5vh]">{item.icon}</div>
-                        <span className="md:text-[2.5vw] lg:text-[1.1vw] text-[5vw] font-medium lg:whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-[#111827] text-[4.5vh] md:text-[4.2vh] lg:text-[4.5vh]">{item.icon}</div>
+                        <span className="md:text-[3vw] lg:text-[1.1vw] text-[5vw] font-medium lg:whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                             {item.label}
                         </span>
                     </Link>

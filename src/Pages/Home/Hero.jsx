@@ -65,7 +65,7 @@ function Hero() {
   }
 
   return (
-    <div className="w-screen h-[70vh] overflow-hidden border-b-[0.5px] border-black relative pt-[40px]">
+    <div className="w-full  overflow-hidden border-b-[0.5px] border-black relative py-[50px] md:py-[40px] lg:py-[60px]">
       <div
         ref={sliderRef}
         className={`flex ${isAnimating ? 'transition-transform duration-700 ease-in-out' : ''}`}
@@ -77,16 +77,16 @@ function Hero() {
         {slides.map((product, idx) => (
           <div
             key={idx}
-            className="w-screen flex justify-center items-center gap-[40px] flex-shrink-0 px-10"
+            className="w-screen flex flex-col-reverse md:flex-row justify-center items-center md:gap-[60px] lg:gap-[40px] gap-[40px]"
           >
-            <div className="w-[30%] flex flex-col gap-[20px]">
-              <p className="text-[60px] font-bold">{product.productName}</p>
-              <p className="text-[30px] font-bold">₦{product.price}</p>
-              <button className="w-[40%] border-2 border-black py-[15px] rounded-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white">
+            <div className="md:w-[40%] lg:w-[30%] w-[80%] flex flex-col gap-[20px] justify-center items-center md:justify-start md:items-start">
+              <p className="md:text-[4vh] lg:text-[7vh] text-[5vh] font-bold text-center md:text-left">{product.productName}</p>
+              <p className="md:text-[2.5vh] lg:text-[4vh] text-[3vh] font-bold">₦{product.price}</p>
+              <a href='http://wa.me/2347035722334' target="_blank" rel="noopener noreferrer" className=" lg:w-[40%] md:w-[70%] w-[60%]  border-2 border-black py-[15px] rounded-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white justify-center items-center flex">
                 Contact Now
-              </button>
+              </a>
             </div>
-            <div className=" w-[500px] h-[500px] rounded-full flex justify-center items-center overflow-hidden">
+            <div className="w-[40vh] h-[40vh] lg:w-[60vh] lg:h-[60vh] md:w-[30vh] md:h-[30vh] rounded-full flex justify-center items-center overflow-hidden">
               <img
                 src={product.productImage}
                 alt={product.productName}

@@ -8,7 +8,7 @@ function AddProductPage() {
         <div className='hidden lg:flex'>
           <Sidebar />
         </div>
-        <main className='w-full  px-[30px] lg:px-0 lg:w-[95%] ml-auto'>
+        <main className='w-full  px-[0px] lg:px-0 lg:w-[95%] ml-auto'>
             <UploadProduct/>
         </main>
     </div>

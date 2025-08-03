@@ -81,7 +81,7 @@ export default function SignUp() {
                 value={name}
                 onChange={e => setName(e.target.value)}
                 placeholder="Your full name"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                className="w-full text-[2.2vh] lg:text-[2vh] md:text-[2.4vh] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
               />
             </div>
 
@@ -97,7 +97,7 @@ export default function SignUp() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                className="w-full text-[2.2vh] lg:text-[2vh] md:text-[2.4vh] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
               />
             </div>
 
@@ -114,7 +114,7 @@ export default function SignUp() {
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                  className="w-full text-[2.2vh] lg:text-[2vh] md:text-[2.4vh] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                 />
                 <button
                   type="button"
@@ -143,7 +143,7 @@ export default function SignUp() {
                   value={confirmPassword}
                   onChange={e => setConfirmPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                  className="w-full text-[2.2vh] lg:text-[2vh] md:text-[2.4vh] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                 />
                 <button
                   type="button"

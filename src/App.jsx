@@ -9,6 +9,7 @@ import Login from './Pages/Auth/Login';
 import SignUp from './Pages/Auth/SiignUp';
 import AuthProvider from './context/AuthProvider';
 import ProtectedRoute from './protectedRoute/ProtectedRoute';
+import AboutPage from './Pages/About/AboutPage';
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
         <Route path="/" element={<HomePage />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/Signup" element={<SignUp />}/>
+        <Route path="/about" element={<AboutPage />}/>
+
         {/* <Route path="/upload" element={<AddProductPage />}/> */}
         {/* <Route path="/products" element={<ProductListPage />}/> */}
         <Route path="/upload" element={

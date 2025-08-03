@@ -80,7 +80,7 @@ export default function Login() {
                 value={identifier}
                 onChange={e => setIdentifier(e.target.value)}
                 placeholder="you@example.com or yourusername"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition text-[2.2vh] lg:text-[2vh] md:text-[2.4vh]"
               />
             </div>
             <div>
@@ -98,7 +98,7 @@ export default function Login() {
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition text-[2.2vh] lg:text-[2vh] md:text-[2.4vh]"
                     />
 
                     <button

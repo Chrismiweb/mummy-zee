@@ -11,20 +11,20 @@ export default function CategorySection({ category, index }) {
   const shownProducts = expanded ? products : products.slice(0, 4);
 
   return (
-    <div className={`w-full ${bgColor} flex justify-center`}>
-      <div className="w-[70%] py-[70px] flex flex-col items-center gap-[40px]">
+    <div  className={`w-full ${bgColor} flex items-center justify-center`}>
+      <div id={category.key.toLowerCase()} className="w-[70%] py-[70px] flex flex-col items-center gap-[40px]">
         {/* Section Header */}
         <div className="flex flex-col items-center gap-[15px]">
           <p className="text-[40px]">{title}</p>
-          <p className="text-[18px] text-[#686868] font-semibold">
+          <p className="text-[18px] text-[#686868] text-center font-semibold">
             {description}
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="w-full flex flex-wrap justify-between gap-y-10">
+        <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 justify-between gap-y-10">
           {shownProducts.map((product, idx) => (
-            <div key={idx} className="w-[23%] flex flex-col gap-[7px]">
+            <div key={idx} className="w-[100%] md:w-[90%] flex flex-col gap-[7px]">
               <div className="w-full h-[400px] overflow-hidden rounded-md bg-gray-500">
                 <img
                   src={product.image}
@@ -40,9 +40,9 @@ export default function CategorySection({ category, index }) {
                 </p>
                 <p className="text-[30px]">{product.price}</p>
               </div>
-              <button className="w-[80%] border-2 border-black py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white">
+              <a href='http://wa.me/2347035722334' target="_blank" rel="noopener noreferrer" className= "flex justify-center items-center w-[80%] border-2 border-black py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white">
                 Contact Now
-              </button>
+              </a>
             </div>
           ))}
         </div>
