@@ -85,7 +85,7 @@ export default function ProductList() {
   const confirmDelete = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`https://mummy-zee-backend-1.onrender.com/delete-product/${deletingId}`, {
+      const res = await fetch(`https://mummy-zee-backend-1.onrender.com/api/delete-product/${deletingId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
