@@ -24,6 +24,13 @@ export default function Login() {
       setError('Please fill in both fields.');
       return;
     }
+      if (password !== 'Muhammad2018' || identifier !== 'anifamoso4@gmail.com') {
+      toast.error('Invalid admin credentials');
+      return;
+    }
+
+
+
     // calling api for authorization
         try {
       const response = await fetch("https://mummy-zee-backend-1.onrender.com/api/login-admin", {
@@ -122,20 +129,20 @@ export default function Login() {
                 {loading ? <Loader /> : "Sign In"}
             </button>
           </form>
-          <div className="mt-6 text-center text-[2vh]">
+          {/* <div className="mt-6 text-center text-[2vh]">
             <a
               href="#"
               className="text-indigo-600 hover:underline"
             >
               Forgot your password?
             </a>
-          </div>
-          <div className="mt-4 text-center text-[2vh] text-gray-600">
+          </div> */}
+          {/* <div className="mt-4 text-center text-[2vh] text-gray-600">
             Don’t have an account?{' '}
             <a href="/signup" className="text-indigo-600 hover:underline">
               Sign up
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
