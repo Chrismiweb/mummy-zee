@@ -173,7 +173,7 @@ export default function ProductList() {
             </Space>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-[12px] md:gap-[8px] lg:gap-[5px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-[12px] md:gap-[8px] lg:gap-[5px]">
           {filteredProducts.map(product => (
             <div key={product._id} className="bg-white shadow rounded p-4 w-[100%] gap-[5px] flex flex-col">
               <img

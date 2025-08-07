@@ -77,16 +77,16 @@ function Hero() {
         {slides.map((product, idx) => (
           <div
             key={idx}
-            className="w-screen flex flex-col-reverse md:flex-row justify-center items-center md:gap-[60px] lg:gap-[40px] gap-[40px]"
+            className="w-screen flex flex-col-reverse md:flex-row justify-center items-center md:gap-[30px] lg:gap-[40px] gap-[40px]"
           >
             <div className="md:w-[40%] lg:w-[30%] w-[80%] flex flex-col gap-[20px] justify-center items-center md:justify-start md:items-start">
-              <p className="md:text-[4vh] lg:text-[7vh] text-[5vh] font-bold text-center md:text-left">{product.productName}</p>
-              <p className="md:text-[2.5vh] lg:text-[4vh] text-[3vh] font-bold">₦{product.price}</p>
+              <p className="md:text-[4vh] lg:text-[5.5vh] xl:text-[7vh] text-[5vh] font-bold text-center md:text-left">{product.productName}</p>
+              <p className="md:text-[2vh] lg:text-[4vh] text-[3vh] font-bold">₦{product.price}</p>
               <a href='http://wa.me/2347035722334' target="_blank" rel="noopener noreferrer" className=" lg:w-[40%] md:w-[70%] w-[60%]  border-2 border-black py-[15px] rounded-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white justify-center items-center flex">
                 Contact Now
               </a>
             </div>
-            <div className="w-[40vh] h-[40vh] lg:w-[60vh] lg:h-[60vh] md:w-[30vh] md:h-[30vh] rounded-full flex justify-center items-center overflow-hidden">
+            <div className="w-[40vh] h-[40vh] lg:w-[35vh] lg:h-[35vh] xl:w-[60vh] xl:h-[60vh] md:w-[20vh] md:h-[20vh] rounded-full flex justify-center items-center overflow-hidden">
               <img
                 src={product.productImage}
                 alt={product.productName}

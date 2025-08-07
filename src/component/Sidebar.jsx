@@ -34,7 +34,7 @@ const Sidebar = ({onClose}) => {
          <div className={`
                 ${close ? 'left-0' : '-left-full'}
                 fixed top-0 lg:left-0 lg:fixed group flex flex-col bg-[#F9FAFB] text-[#111827] py-4 px-2 h-screen transition-all duration-300 
-                w-[85%] lg:w-[5%] lg:hover:w-[20vw] overflow-hidden z-40 shadow-[4px_0_12px_rgba(0,0,0,0.1)]
+                w-[85%] lg:w-[8%] xl:w-[5%] lg:hover:w-[20vw] overflow-hidden z-40 shadow-[4px_0_12px_rgba(0,0,0,0.1)]
             `}>      
             <div className='flex items-center justify-between md:pr-[50px]'>
                 {/* <div className='flex'>
