@@ -43,13 +43,13 @@ const Sidebar = ({onClose}) => {
                 <Link to='/' className='lg:w-[5vw] md:w-[10vw] w-[20vw] pb-[40px]'>
                     <img src="/image/mummyZee Logo.png" className='w-full h-full object-fill' alt="" />
                 </Link>
-                <FiX onClick={onClose} className='md:text-[6vw] text-[9vw] lg:hidden flex'/>
+                <FiX onClick={onClose} className='md:text-[6vw] text-[35px] lg:hidden flex'/>
             </div>
             <div className="space-y-[3.5vh] md:space-y-[3vh] cursor-pointer">
                 {items.map((item, index) => (
                     <Link to={item.link} key={index} className="flex items-center space-x-3 px-2 hover:bg-[#E5E7EB] rounded-md py-2 transition-all duration-200">
-                        <div className="text-[#111827] text-[4.5vh] md:text-[4.2vh] lg:text-[4.5vh]">{item.icon}</div>
-                        <span className="md:text-[3vw] lg:text-[1.1vw] text-[5vw] font-medium lg:whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-[#111827] text-[25px] md:text-[4.2vh] lg:text-[4.5vh]">{item.icon}</div>
+                        <span className="md:text-[3vw] lg:text-[1.1vw] text-[22px] font-medium lg:whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                             {item.label}
                         </span>
                     </Link>
@@ -58,8 +58,8 @@ const Sidebar = ({onClose}) => {
             <div className="flex-grow"></div>
              <div className="space-y-6 cursor-pointer">
                     <div onClick={logout} className="flex items-center space-x-3 px-2 hover:bg-[#E5E7EB] rounded-md py-2 transition-all duration-200">
-                        <div className="text-[#111827] text-[4.5vh] md:text-[3.8vh] lg:text-[4.5vh]"><IoLogOutOutline /></div>
-                        <span className="md:text-[2.5vw] lg:text-[1.1vw] text-[5vw] font-medium  lg:whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-[#111827] text-[25px] md:text-[3.8vh] lg:text-[4.5vh]"><IoLogOutOutline /></div>
+                        <span className="md:text-[2.5vw] lg:text-[1.1vw] text-[22px] font-medium  lg:whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                             LOG OUT
                         </span>
                     </div>

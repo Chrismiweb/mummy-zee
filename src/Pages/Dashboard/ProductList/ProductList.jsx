@@ -140,11 +140,11 @@ export default function ProductList() {
       <div className="flex flex-col gap-12 py-10 lg:px-12">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-[30px]">
             <div className='flex justify-between w-full'>
-                <p className="text-[4vh] md:text-[5vh]">All Products</p>
+                <p className="text-[28px] md:text-[5vh]">All Products</p>
                 <div className='flex lg:hidden w-[30%]  justify-end'>
                     <div>
                         {!showSidebar && (
-                            <button onClick={handleDisplaySidebar} className='text-[9vw] md:text-[6vw]'>
+                            <button onClick={handleDisplaySidebar} className='text-[30px] md:text-[6vw]'>
                             <HiOutlineMenuAlt3 />
                             </button>
                         )}
@@ -181,20 +181,20 @@ export default function ProductList() {
                 alt={product.productName}
                 className="h-48 w-full object-fill rounded"
               />
-              <h2 className="mt-2 font-semibold text-[3vh] md:text-[2.3vh] lg:text-[2vh]">{highlightMatch(product.productName, searchQuery)}</h2>
-              <p className='text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]'>Size: {product.size}</p>
-              <p className='text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]'>Category: {highlightMatch(product.category, searchQuery)}</p>
-              <p className="text-[2.9vh] md:text-[2.3vh] lg:text-[1.9vh] font-bold">₦{product.price}</p>
+              <h2 className="mt-2 font-semibold text-[20px] md:text-[2.3vh] lg:text-[2vh]">{highlightMatch(product.productName, searchQuery)}</h2>
+              <p className='text-[18px] md:text-[2.1vh] lg:text-[1.7vh]'>Size: {product.size}</p>
+              <p className='text-[18px] md:text-[2.1vh] lg:text-[1.7vh]'>Category: {highlightMatch(product.category, searchQuery)}</p>
+              <p className="text-[20px] md:text-[2.3vh] lg:text-[1.9vh] font-bold">₦{product.price}</p>
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => handleEditClick(product)}
-                  className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 cursor-pointer text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]"
+                  className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 cursor-pointer text-[20px] md:text-[2.1vh] lg:text-[1.7vh]"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDeleteClick(product._id)}
-                  className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 cursor-pointer text-[2.7vh] md:text-[2.1vh] lg:text-[1.7vh]"
+                  className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 cursor-pointer text-[20px] md:text-[2.1vh] lg:text-[1.7vh]"
                 >
                   Delete
                 </button>

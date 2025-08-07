@@ -110,11 +110,11 @@ const UploadProduct = () => {
   return (
     <div className="w-full bg-gray-100 py-10 flex flex-col lg:px-[30px] justify-center items-center">
       <div className='flex justify-between w-full px-[30px] lg:px-0'>
-          <p className="text-[4vh] md:text-[5vh]">Add New Product</p>
+          <p className="text-[28px] md:text-[5vh]">Add New Product</p>
           <div className='flex lg:hidden w-[30%]  justify-end'>
               <div>
                   {!showSidebar && (
-                      <button onClick={handleDisplaySidebar} className='text-[9vw] md:text-[6vw]'>
+                      <button onClick={handleDisplaySidebar} className='text-[30px] md:text-[6vw]'>
                       <HiOutlineMenuAlt3 />
                       </button>
                   )}
@@ -127,7 +127,7 @@ const UploadProduct = () => {
       </div>
       <div className="lg:w-[60%] w-[90%] px-[30px] py-[30px] mt-[40px] lg:mt-[100px] bg-white rounded-[20px] shadow-lg">
         {/* <h2 className="text-[40px] font-semibold mb-1">Add New Product</h2> */}
-        <p className="text-gray-500 mb-4 text-[2.3vh] md:text-[2.1vh] lg:text-[1.7vh]">
+        <p className="text-gray-500 mb-4 text-[18px] md:text-[2.1vh] lg:text-[1.7vh]">
           Add information and upload a product image
         </p>
 
@@ -137,7 +137,7 @@ const UploadProduct = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Product Name */}
           <div className="flex flex-col gap-[10px]">
-            <label className="text-[3vh] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Product Name</label>
+            <label className="text-[20px] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Product Name</label>
             <input
               type="text"
               name="productName"
@@ -150,7 +150,7 @@ const UploadProduct = () => {
 
           {/* Price */}
           <div className="flex flex-col gap-[10px]">
-            <label className="text-[3vh] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Price</label>
+            <label className="text-[20px] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Price</label>
             <input
               type="text"
               name="price"
@@ -163,7 +163,7 @@ const UploadProduct = () => {
 
           {/* Size */}
           <div className="flex flex-col gap-[10px]">
-            <label className="text-[3vh] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Size</label>
+            <label className="text-[20px] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Size</label>
             <select
               name="size"
               value={formData.size}
@@ -179,7 +179,7 @@ const UploadProduct = () => {
 
           {/* Category */}
           <div className="flex flex-col gap-[10px]">
-            <label className="text-[3vh] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Category</label>
+            <label className="text-[20px] md:text-[2.5vh] lg:text-[2.5vh] text-gray-500">Category</label>
             <select
               name="category"
               value={formData.category}
@@ -234,14 +234,14 @@ const UploadProduct = () => {
             <button
               type="submit"
               disabled={loading}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition text-[3vh] md:text-[2.5vh] lg:text-[2.5vh]"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition text-[20px] md:text-[2.5vh] lg:text-[2.5vh]"
             >
               {loading ? 'Saving…' : 'Save'}
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 transition text-[3vh] md:text-[2.5vh] lg:text-[2.5vh]"
+              className="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400 transition text-[20px] md:text-[2.5vh] lg:text-[2.5vh]"
             >
               Cancel
             </button>
