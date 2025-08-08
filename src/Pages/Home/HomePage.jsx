@@ -22,8 +22,11 @@ function HomePage() {
           notificationSound
         />
         <Navbar onSearch={setSearchQuery}/>
-        <Hero/>
-        <Products onSearch={setSearchQuery}/>
+        {/* <Hero/>
+        <Products onSearch={setSearchQuery}/> */}
+        <div className='w-full h-[100vh] flex flex-col items-center justify-center gap-4'>
+          <p className='text-[50px] font-bold text-center w-[60%]'>WEBSITE IS CURRENTLY UNDER MAINTENANCE, PLEASE COME BACK LATER</p>
+        </div>
         <Footer/>
     </div>
   )
