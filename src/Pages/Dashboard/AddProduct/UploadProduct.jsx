@@ -64,7 +64,7 @@ const UploadProduct = () => {
       payload.append('category', category);
       payload.append('productImage', productImage);
 
-      const res = await fetch('https://mummy-zee-backend.onrender.com/api/add-product', {
+      const res = await fetch('https://mummy-zee-backend-1.onrender.com/api/add-product', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

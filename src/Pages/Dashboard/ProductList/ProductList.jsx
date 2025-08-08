@@ -31,13 +31,13 @@ export default function ProductList() {
     const fetchProducts = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch('https://mummy-zee-backend.onrender.com/api/all-product', {
+        const res = await fetch('https://mummy-zee-backend-1.onrender.com/api/all-product', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || 'Failed to fetch products');
         setProducts(data.products);
-        console.log(data.products);
+        
       } catch (err) {
         setError(err.message);
       } finally {
@@ -86,7 +86,7 @@ export default function ProductList() {
   const confirmDelete = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`https://mummy-zee-backend.onrender.com/api/delete-product/${deletingId}`, {
+      const res = await fetch(`https://mummy-zee-backend-1.onrender.com/api/delete-product/${deletingId}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
