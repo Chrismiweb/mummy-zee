@@ -12,7 +12,7 @@ function Navbar({ onSearch }) {
     setMenuOpen(!menuOpen);
   };
 
-  const menuItems = ["ABAYA", "GOWN", "JALABIYA", "SHOES", "BAGS", "CAPS", "SCARVES", "HIJABS", "UNDERWEAR", "VEILS"];
+  const menuItems = ["ABAYA", "GOWN", "JALABIYA", "SHOE", "BAG", "CAP", "SCARVE", "HIJAB", "UNDERWEAR", "VEIL", "ALL PRODUCTS"];
 
     // Handle Search Change
   const handleSearchChange = (value) => {

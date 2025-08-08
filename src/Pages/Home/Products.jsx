@@ -4,16 +4,19 @@ import CategorySection from './CategorySection';
 // import CategorySection from './CategorySection';  
 
 const categoryMeta = {
-  all:       { title: 'ALL PRODUCTS',  description: 'Browse our full collection' },
+  allproducts:       { title: 'ALL PRODUCT',  description: 'Browse our full collection' },
   abaya:     { title: 'ABAYA',         description: 'Check out our newest Abayas' },
   gown:      { title: 'GOWN',          description: 'Explore our elegant gowns' },
   jalabiya:  { title: 'JALABIYA',      description: 'Traditional meets modern Jalabijas' },
-  shoe:      { title: 'SHOES',         description: 'Step out in style with our latest shoes' },
-  bag:       { title: 'BAGS',          description: 'Chic and functional bags for every outing' },
-  cap:       { title: 'CAPS',          description: 'Finish your look with a stylish cap' },
-  scarve:    { title: 'SCARVES',       description: 'Wrap up in elegance with our scarf collection' },
-  hijab:     { title: 'HIJABS',        description: 'Elegant hijabs in various colors and fabrics' },
+  shoe:      { title: 'SHOE',         description: 'Step out in style with our latest shoes' },
+  bag:       { title: 'BAG',          description: 'Chic and functional bags for every outing' },
+  cap:       { title: 'CAP',          description: 'Finish your look with a stylish cap' },
+  scarve:    { title: 'SCARVE',       description: 'Wrap up in elegance with our scarf collection' },
+  hijab:     { title: 'HIJAB',        description: 'Elegant hijabs in various colors and fabrics' },
   underwear: { title: 'UNDERWEAR',     description: 'Soft, breathable and invisible undergarments' },
+  // veil: { title: 'UNDERWEAR',     description: 'Soft, breathable and invisible undergarments' },
+  veil:      { title: 'VEIL',         description: 'Luxury veils for special occasions' },
+
 };
 
 // function Products({searchQuery}) {
@@ -108,6 +111,7 @@ function Products({ searchQuery }) {
         title: p.productName.trim(),
         price: `₦${cleanPrice(p.price).toLocaleString()}`,
         image: p.productImage,
+        availability: p.availability,
       })),
     }));
   }, [grouped]);
@@ -138,6 +142,7 @@ function Products({ searchQuery }) {
           key={sec.key}
           category={sec}
           index={i}
+          id={sec.key.toLowerCase()} // Pass the ID
         />
       ))}
     </div>

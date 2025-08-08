@@ -39,10 +39,27 @@ export default function CategorySection({ category, index }) {
                   {product.title}
                 </p>
                 <p className="text-[30px]">{product.price}</p>
+                <p className={`font-semibold 
+                        text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] 
+                        ${product.availability === 'available' ? 'text-green-600' : 'text-red-600'}`}
+                    >
+                      {product.availability}
+                  </p>
               </div>
-              <a href='http://wa.me/2347035722334' target="_blank" rel="noopener noreferrer" className= "flex justify-center items-center w-[80%] border-2 border-black py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white">
+              {/* <a href='http://wa.me/2347035722334' target="_blank" rel="noopener noreferrer" className= "flex justify-center items-center w-[80%] border-2 border-black py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white">
+                Contact Now
+              </a> */}
+              <a
+                href={`https://wa.me/2347035722334?text=${encodeURIComponent(
+                  `Hello! I'm interested in this product:\n${product.title}\nPrice: ${product.price}\nProduct Image: ${product.image}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex justify-center items-center w-[80%] border-2 border-black py-[15px] rounded-[10px] mt-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white"
+              >
                 Contact Now
               </a>
+
             </div>
           ))}
         </div>

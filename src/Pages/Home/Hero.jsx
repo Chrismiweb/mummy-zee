@@ -82,7 +82,11 @@ function Hero() {
             <div className="md:w-[40%] lg:w-[30%] w-[80%] flex flex-col gap-[20px] justify-center items-center md:justify-start md:items-start">
               <p className="md:text-[4vh] lg:text-[5.5vh] xl:text-[7vh] text-[5vh] font-bold text-center md:text-left">{product.productName}</p>
               <p className="md:text-[2vh] lg:text-[4vh] text-[3vh] font-bold">₦{product.price}</p>
-              <a href='http://wa.me/2347035722334' target="_blank" rel="noopener noreferrer" className=" lg:w-[40%] md:w-[70%] w-[60%]  border-2 border-black py-[15px] rounded-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white justify-center items-center flex">
+              <a href={`https://wa.me/2347035722334?text=${encodeURIComponent(
+                  `Hello! I'm interested in this product:\n${product.title}\nPrice: ${product.price}\nProduct Image: ${product.productImage}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer" className=" lg:w-[40%] md:w-[70%] w-[60%]  border-2 border-black py-[15px] rounded-[10px] text-[18px] font-bold cursor-pointer hover:bg-black hover:text-white justify-center items-center flex">
                 Contact Now
               </a>
             </div>
