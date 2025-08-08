@@ -37,6 +37,7 @@ export default function ProductList() {
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || 'Failed to fetch products');
         setProducts(data.products);
+        console.log(data.products);
         
       } catch (err) {
         setError(err.message);
@@ -185,7 +186,15 @@ export default function ProductList() {
               <h2 className="mt-2 font-semibold text-[20px] md:text-[2.3vh] lg:text-[2vh]">{highlightMatch(product.productName, searchQuery)}</h2>
               <p className='text-[18px] md:text-[2.1vh] lg:text-[1.7vh]'>Size: {product.size}</p>
               <p className='text-[18px] md:text-[2.1vh] lg:text-[1.7vh]'>Category: {highlightMatch(product.category, searchQuery)}</p>
-              <p className="text-[20px] md:text-[2.3vh] lg:text-[1.9vh] font-bold">₦{product.price}</p>
+              <div className='w-full flex justify-between items-center'>
+                  <p className="text-[20px] md:text-[2.3vh] lg:text-[1.9vh] font-bold">₦{product.price}</p>
+                  <p className={`font-semibold 
+                          text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] 
+                          ${product.availability.toLowerCase() === 'available' ? 'text-green-600' : 'text-red-600'}`}
+                      >
+                        {product.availability}
+                  </p>
+              </div>
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => handleEditClick(product)}
@@ -295,6 +304,18 @@ function EditForm({ product, onSave, onCancel }) {
           <option>Small</option>
           <option>Medium</option>
           <option>Large</option>
+        </select>
+      </div>
+      <div>
+        <label className="block mb-1">Availability</label>
+        <select
+          name="availability"
+          value={form.availability}
+          onChange={handleChange}
+          className="w-full border px-3 py-2 rounded"
+        >
+          <option>available</option>
+          <option>sold out</option>
         </select>
       </div>
       <div>
