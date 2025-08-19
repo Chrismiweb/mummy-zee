@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function CategorySection({ category, index }) {
-  const { title, description, products } = category;
+  const { title, description, products, size } = category;
   const bgColor = index % 2 === 0 ? 'bg-white' : 'bg-[#F1E8DF]';
 
   // track whether we've expanded to show all products
@@ -38,6 +38,11 @@ export default function CategorySection({ category, index }) {
                 <p className="text-[18px] font-semibold text-[#686868]">
                   {product.title}
                 </p>
+                <div>
+                  <p className="text-[16px] text-[#686868]">
+                    Size: {product.size || 'N/A'}
+                  </p>
+                </div>
                 <p className="text-[30px]">{product.price}</p>
                 <p className={`font-semibold 
                         text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] 

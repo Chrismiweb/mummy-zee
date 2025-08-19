@@ -112,6 +112,7 @@ function Products({ searchQuery }) {
         price: `₦${cleanPrice(p.price).toLocaleString()}`,
         image: p.productImage,
         availability: p.availability,
+        size: p.size,
       })),
     }));
   }, [grouped]);

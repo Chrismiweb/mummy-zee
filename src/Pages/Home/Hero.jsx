@@ -82,6 +82,7 @@ function Hero() {
             <div className="md:w-[40%] lg:w-[30%] w-[80%] flex flex-col gap-[20px] justify-center items-center md:justify-start md:items-start">
               <p className="md:text-[4vh] lg:text-[5.5vh] xl:text-[7vh] text-[5vh] font-bold text-center md:text-left">{product.productName}</p>
               <p className="md:text-[2vh] lg:text-[4vh] text-[3vh] font-bold">₦{product.price}</p>
+
               <a href={`https://wa.me/2347035722334?text=${encodeURIComponent(
                   `Hello! I'm interested in this product:\n${product.title}\nPrice: ${product.price}\nProduct Image: ${product.productImage}`
                 )}`}
