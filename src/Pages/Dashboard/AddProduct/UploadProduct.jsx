@@ -174,6 +174,8 @@ const UploadProduct = () => {
               <option value="Small">Small</option>
               <option value="Medium">Medium</option>
               <option value="Large">Large</option>
+              <option value="All Sizes">All Sizes</option>
+
             </select>
           </div>
 
