@@ -304,6 +304,8 @@ function EditForm({ product, onSave, onCancel }) {
           <option>Small</option>
           <option>Medium</option>
           <option>Large</option>
+          <option>All Sizes</option>
+
         </select>
       </div>
       <div>
